@@ -7,7 +7,7 @@ This repository sets up a Docker-based SonarQube environment optimized for stati
 * Wget
 * Docker
 * Docker Compose
-* UFW (Optional, If you want to access the SonarQube from external, it may need to allow access)
+* UFW (Optional, if you want to access SonarQube from the external, you may need it to allow access)
 
 ## Quick Start
 
@@ -32,14 +32,14 @@ The default server URL is [http://localhost:9000](http://localhost:9000).
 This setup uses the open-source [Sonar CXX Plugin](https://github.com/SonarOpenCommunity/sonar-cxx).
 This plugin is automatically downloaded and mounted to the `extensions/plugins` directory.
 
-If neede manually:
+If needed manually:
 
 ```shell
 wget https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/latest-snapshot/sonar-cxx-plugin-2.2.2.1262.jar \
   -P extensions/plugins/
 ```
 
-You can also configure this in `Dockerfile` for automation.
+You can also configure this in the `Dockerfile` for automation.
 
 ## Running Analysis
 
@@ -96,7 +96,7 @@ brew install sonar-scanner
 
 **Note: Make sure `sonar-scanner` is available in your `$PATH`
 
-## Appendix: Fixing `vm.max_map_count` Error
+## Appendix B. Fixing `vm.max_map_count` Error
 
 If you see the error:
 
