@@ -62,6 +62,6 @@ sonar-scanner \
 ## Cleanup
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
