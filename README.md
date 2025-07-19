@@ -7,6 +7,7 @@ This repository sets up a Docker-based SonarQube environment optimized for stati
 * Wget
 * Docker
 * Docker Compose
+* UFW (Optional, If you want to access the SonarQube from external, it may need to allow access)
 
 ## Quick Start
 
@@ -23,8 +24,6 @@ docker compose up -d
 
 The default server URL is [http://localhost:9000](http://localhost:9000).
 * Default login: , `sonar` / `sonarpass`
-
----
 
 ## C++ Plugin Setup
 
@@ -63,5 +62,67 @@ sonar-scanner \
 
 ```bash
 docker compose down
+```
+
+---
+
+## Appendix A. Install SonarScanner
+
+For Linux/macOS:
+
+```shell
+# Download and extract SonarScanner CLI
+wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+mv sonar-scanner-5.0.1.3006-linux sonar-scanner
+export PATH="$PWD/sonar-scanner/bin:$PATH"
+```
+
+To permanently add SonarScanner to your PATH (Linux/macOS):
+
+```shell
+# Add this line to your shell profile
+echo 'export PATH="$HOME/path/to/sonar-scanner/bin:$PATH"' >> ~/.bashrc  # or ~/.zshrc for zsh users
+
+# Then apply the change
+source ~/.bashrc  # or source ~/.zshrc
+```
+
+For Homebrew users (macOS):
+
+```shell
+brew install sonar-scanner
+```
+
+**Note: Make sure `sonar-scanner` is available in your `$PATH`
+
+## Appendix: Fixing `vm.max_map_count` Error
+
+If you see the error:
+
+```
+max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+```
+
+It means the system setting for virtual memory is too low for Elasticsearch, which SonarQube uses.
+
+```text
+$ sysctl -a 2>/dev/null | grep vm.max_map_count
+vm.max_map_count = 65530
+```
+
+### Fix
+
+Run the following command:
+
+```shell
+sudo sysctl -w vm.max_map_count=262144
+```
+
+Check the current value that has changed:
+
+```text
+$ sysctl -a 2>/dev/null | grep vm.max_map_count
+vm.max_map_count = 262144
 ```
 
