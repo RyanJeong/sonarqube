@@ -23,7 +23,7 @@ docker compose up -d
 ```
 
 The default server URL is [http://localhost:9000](http://localhost:9000).
-* Default login: , `sonar` / `sonarpass`
+* Default login: `admin` / `admin`
 
 ## C++ Plugin Setup
 
