@@ -21,17 +21,24 @@ read -p "Enter SonarQube port [default: 9000]: " port
 read -p "Enter SonarQube DB username [default: sonar]: " db_user
 read -sp "Enter SonarQube DB password [default: sonarpass]: " db_pass
 echo ""
+read -p "Enter SonarQube admin username [default: admin]: " admin_user
+read -sp "Enter SonarQube admin password [default: admin]: " admin_pass
+echo ""
 
 port="${port:-9000}"
 db_user="${db_user:-sonar}"
 db_pass="${db_pass:-sonarpass}"
+admin_user="${admin_user:-admin}"
+admin_pass="${admin_pass:-admin}"
 
 cat <<EOF > .env
 SONARQUBE_PORT=${port}
 SONARQUBE_DB_USER=${db_user}
 SONARQUBE_DB_PASS=${db_pass}
+SONARQUBE_ADMIN_USER=${admin_user}
+SONARQUBE_ADMIN_PASSWORD=${admin_pass}
 EOF
 
 info ".env file created with:"
-cat .env
+debug "\n$(cat .env)"
 
