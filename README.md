@@ -18,7 +18,7 @@ git submodule update --init --recursive
 ./init_env.sh
 
 # Launch SonarQube with plugin
-docker-compose up -d
+docker compose up -d
 ```
 
 The default server URL is [http://localhost:9000](http://localhost:9000).
