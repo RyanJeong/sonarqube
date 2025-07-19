@@ -1,0 +1,3 @@
+[submodule "docker-sonarqube"]
+	path = docker-sonarqube
+	url = https://github.com/SonarSource/docker-sonarqube
